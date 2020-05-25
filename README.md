@@ -1,3 +1,6 @@
-# esqueleto-jogo-agentes-ia
+# Jogo Labirinto
 
-Esqueleto de código para projeto de agentes inteligentes em disciplinas de inteligência artificial, prática de algoritmos de buscas cegas e informadas.
+Jogo labirinto desenvolvido em Python para a disciplina de Inteligência Artificial.
+
+![Estados_do_jogo](Estados_jogo_labirinto.png)
+
