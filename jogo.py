@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 import time
-from regras_jogo.regras_abstratas import construir_jogo
+from labirinto.labirinto import construir_jogo
 from regras_jogo.personagens import Personagens
 from agentes.abstrato import construir_agente
 from agentes.tipos import TiposAgentes
@@ -14,9 +14,7 @@ def ler_tempo(em_turnos=False):
     """
     return 1 if em_turnos else time.time()
 
-
 def iniciar_jogo():
-    
     # Inicializar e configurar jogo
     jogo = construir_jogo()
     personagem_jogador = jogo.registrarAgentePersonagem(Personagens.O_JOGADOR)
