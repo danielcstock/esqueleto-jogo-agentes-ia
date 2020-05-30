@@ -16,7 +16,7 @@ class Agentes(AgenteAbstrato):
         ''' Escolhe proxima acao, com base em seu entendimento do mundo, a partir
         das percepções anteriores.
         '''
-        return AcaoJogador.cima(1, 2, 3, 4)
+        return AcaoJogador.cima()
 
 def construir_agente(*args, **kwargs):
     """ Método factory para uma instância Agente arbitrária, de acordo com os
