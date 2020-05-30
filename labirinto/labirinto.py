@@ -17,16 +17,34 @@ class Labirinto(AbstractRegrasJogo):
         self.mapa[s[0]][s[1]] = "s"
         # Definição do caminho solução
         i, j = 1, x[1]
+        alternador = True
         while i != s[0]-1 or j != s[1]:
             self.mapa[i][j] = "e"
-            if i < s[0] - 1:
-                i = i + 1
-            elif j < s[1]:
-                j = j + 1
-            elif j > s[1]:
-                j = j - 1
+            if alternador:
+                if i < s[0] - 1:
+                    i = i + 1
+                alternador = False
+            else:
+                if j < s[1]:
+                    j = j + 1
+                elif j > s[1]:
+                    j = j - 1
+                alternador = True
         self.mapa[i][j] = "e"
         # Definição dos caminhos extras
+        for _ in range(0, tamanho*tamanho):
+            i = random.randrange(1, tamanho - 2)
+            j = random.randrange(1, tamanho - 2)
+            if self.mapa[i + 1][j] == "e" and self.mapa[i - 1][j] == 0 and self.mapa[i][j + 1] == 0 and self.mapa[i][j-1] == 0:
+                self.mapa[i][j] = "e"
+            elif self.mapa[i + 1][j] == 0 and self.mapa[i - 1][j] == "e" and self.mapa[i][j + 1] == 0 and self.mapa[i][j-1] == 0:
+                self.mapa[i][j] = "e"    
+            elif self.mapa[i + 1][j] == 0 and self.mapa[i - 1][j] == 0 and self.mapa[i][j + 1] == "e" and self.mapa[i][j-1] == 0:
+                self.mapa[i][j] = "e"    
+            elif self.mapa[i + 1][j] == 0 and self.mapa[i - 1][j] == 0 and self.mapa[i][j + 1] == 0 and self.mapa[i][j-1] == "e":
+                self.mapa[i][j] = "e" 
+            elif self.mapa[i + 1][j] == 0 and self.mapa[i - 1][j] == 0 and self.mapa[i][j + 1] == 0 and self.mapa[i][j-1] == 0:   
+                self.mapa[i][j] = "e" 
         for linha in self.mapa:
             print(linha)
 
