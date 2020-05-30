@@ -1,5 +1,6 @@
 from regras_jogo.regras_abstratas import AbstractRegrasJogo
 from regras_jogo.personagens import Personagens
+from acoes import AcoesJogador
 import random
 
 class Labirinto(AbstractRegrasJogo):
@@ -84,6 +85,35 @@ class Labirinto(AbstractRegrasJogo):
         """ Apenas neste momento o jogo é atualizado para seu próximo estado
         de acordo com as ações de cada jogador registradas anteriormente.
         """
+        if self.proximaAcao.parametros[0] == AcoesJogador.BAIXO:
+            if self.mapa[self.x[0]+1][self.x[1]] == "e" or self.mapa[self.x[0]+1][self.x[1]] == "s":
+                self.mapa[self.x[0]][self.x[1]] = "e"
+                self.x[0] += 1
+                self.mapa[self.x[0]][self.x[1]] = "x"
+            else:
+                print("Jogada inválida.")
+        if self.proximaAcao.parametros[0] == AcoesJogador.CIMA:
+            if self.mapa[self.x[0]-1][self.x[1]] == "e" or self.mapa[self.x[0]-1][self.x[1]] == "s":
+                self.mapa[self.x[0]][self.x[1]] = "e"
+                self.x[0] -= 1
+                self.mapa[self.x[0]][self.x[1]] = "x"
+            else:
+                print("Jogada inválida.")
+        if self.proximaAcao.parametros[0] == AcoesJogador.DIREITA:
+            if self.mapa[self.x[0]][self.x[1]+1] == "e" or self.mapa[self.x[0]][self.x[1]+1] == "s":
+                self.mapa[self.x[0]][self.x[1]] = "e"
+                self.x[1] += 1
+                self.mapa[self.x[0]][self.x[1]] = "x"
+            else:
+                print("Jogada inválida.")
+        if self.proximaAcao.parametros[0] == AcoesJogador.ESQUERDA:
+            if self.mapa[self.x[0]][self.x[1]-1] == "e" or self.mapa[self.x[0]][self.x[1]-1] == "s":
+                self.mapa[self.x[0]][self.x[1]] = "e"
+                self.x[1] -= 1
+                self.mapa[self.x[0]][self.x[1]] = "x"
+            else:
+                print("Jogada inválida.")
+            
         self.tempo += diferencial_tempo
             
         

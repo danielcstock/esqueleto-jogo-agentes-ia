@@ -21,15 +21,21 @@ class AgentePrepostoESHumano(AgenteAbstrato):
     
     def escolherProximaAcao(self):
         jogadas = []
-        tecla = input()
-        if tecla == "8":
-            jogadas.append(AcoesJogador.CIMA)
-        elif tecla == "4":
-            jogadas.append(AcoesJogador.ESQUERDA)
-        elif tecla == "6":
-            jogadas.append(AcoesJogador.DIREITA)
-        elif tecla == "2":
-            jogadas.append(AcoesJogador.BAIXO)
+        turno = True
+        while turno:
+            tecla = input()
+            if tecla == "8":
+                jogadas.append(AcoesJogador.CIMA)
+                turno = False
+            elif tecla == "4":
+                jogadas.append(AcoesJogador.ESQUERDA)
+                turno = False
+            elif tecla == "6":
+                jogadas.append(AcoesJogador.DIREITA)
+                turno = False
+            elif tecla == "2":
+                jogadas.append(AcoesJogador.BAIXO)
+                turno = False
         acao = AcaoJogador("Humano", jogadas)
         return acao
             
