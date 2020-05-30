@@ -1,6 +1,5 @@
 from regras_jogo.regras_abstratas import AbstractRegrasJogo
 from regras_jogo.personagens import Personagens
-from agentes import *
 
 class Labirinto(AbstractRegrasJogo):
     def registrarAgentePersonagem(self, personagem):

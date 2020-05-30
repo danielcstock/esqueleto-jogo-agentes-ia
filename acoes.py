@@ -13,5 +13,17 @@ class AcaoJogador():
     parametros: tuple = tuple()
 
     @classmethod
-    def nome_de_uma_acao_valida_no_seu_jogo(cls, p1,p2,p3,p4):
+    def direita(cls, p1,p2,p3,p4):
         return cls(AcoesJogador.DIREITA, (p1,p2,p3,p4))
+
+    @classmethod
+    def esquerda(cls, p1,p2,p3,p4):
+        return cls(AcoesJogador.ESQUERDA, (p1,p2,p3,p4))
+
+    @classmethod
+    def cima(cls, p1,p2,p3,p4):
+        return cls(AcoesJogador.CIMA, (p1,p2,p3,p4))
+        
+    @classmethod
+    def baixo(cls, p1,p2,p3,p4):
+        return cls(AcoesJogador.BAIXO, (p1,p2,p3,p4))

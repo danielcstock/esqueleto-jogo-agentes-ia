@@ -1,4 +1,6 @@
 from agentes.abstrato import AgenteAbstrato
+from acoes import AcaoJogador
+
 class AgentePrepostoESHumano(AgenteAbstrato):
     
     def adquirirPercepcao(self, percepcao_mundo):
@@ -8,4 +10,5 @@ class AgentePrepostoESHumano(AgenteAbstrato):
         pass
     
     def escolherProximaAcao(self):
-        pass
+        acao = AcaoJogador()
+        return acao.cima()
