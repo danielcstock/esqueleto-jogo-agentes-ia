@@ -17,22 +17,26 @@ def iniciar_jogo():
     # Inicializar e configurar jogo
     jogo = construir_jogo(tamanho = 10)
     personagem_jogador = jogo.registrarAgentePersonagem(Personagens.O_JOGADOR)
-    agente_jogador = construir_agente(TiposAgentes.PREPOSTO_HUMANO, Personagens.O_JOGADOR)
+    # agente_jogador = construir_agente(TiposAgentes.PREPOSTO_HUMANO, Personagens.O_JOGADOR)
+    agente_jogador = construir_agente(TiposAgentes.AUTO_BFS, Personagens.O_AGENTE)
     
     tempo_de_jogo = 0
-    while not jogo.isFim():
-        # Mostrar mundo ao jogador
-        ambiente_perceptivel = jogo.gerarCampoVisao(personagem_jogador)
-        agente_jogador.adquirirPercepcao(ambiente_perceptivel)
-        
-        # Decidir jogada e apresentar ao jogo
-        acao = agente_jogador.escolherProximaAcao()
-        jogo.registrarProximaAcao(personagem_jogador, acao)
 
-        # Atualizar jogo
-        tempo_corrente = ler_tempo()
-        jogo.atualizarEstado(tempo_corrente - tempo_de_jogo)
-        tempo_de_jogo += tempo_corrente
+    ambiente_perceptivel = jogo.gerarCampoVisao(personagem_jogador)
+    agente_jogador.adquirirPercepcao(ambiente_perceptivel)
+    # while not jogo.isFim():
+    #     # Mostrar mundo ao jogador
+    #     ambiente_perceptivel = jogo.gerarCampoVisao(personagem_jogador)
+    #     agente_jogador.adquirirPercepcao(ambiente_perceptivel)
+        
+    #     # Decidir jogada e apresentar ao jogo
+    #     acao = agente_jogador.escolherProximaAcao()
+    #     jogo.registrarProximaAcao(personagem_jogador, acao)
+
+    #     # Atualizar jogo
+    #     tempo_corrente = ler_tempo()
+    #     jogo.atualizarEstado(tempo_corrente - tempo_de_jogo)
+    #     tempo_de_jogo += tempo_corrente
 
 if __name__ == '__main__':
     iniciar_jogo()

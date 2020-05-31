@@ -93,6 +93,7 @@ class Labirinto(AbstractRegrasJogo):
                 self.mapa[self.x[0]][self.x[1]] = "e"
                 self.x[0] += 1
                 self.mapa[self.x[0]][self.x[1]] = "x"
+                print("\n")
             else:
                 print("Jogada inválida.")
         if self.proximaAcao.parametros[0] == AcoesJogador.CIMA:
@@ -100,6 +101,7 @@ class Labirinto(AbstractRegrasJogo):
                 self.mapa[self.x[0]][self.x[1]] = "e"
                 self.x[0] -= 1
                 self.mapa[self.x[0]][self.x[1]] = "x"
+                print("\n")
             else:
                 print("Jogada inválida.")
         if self.proximaAcao.parametros[0] == AcoesJogador.DIREITA:
@@ -107,6 +109,7 @@ class Labirinto(AbstractRegrasJogo):
                 self.mapa[self.x[0]][self.x[1]] = "e"
                 self.x[1] += 1
                 self.mapa[self.x[0]][self.x[1]] = "x"
+                print("\n")
             else:
                 print("Jogada inválida.")
         if self.proximaAcao.parametros[0] == AcoesJogador.ESQUERDA:
@@ -114,6 +117,7 @@ class Labirinto(AbstractRegrasJogo):
                 self.mapa[self.x[0]][self.x[1]] = "e"
                 self.x[1] -= 1
                 self.mapa[self.x[0]][self.x[1]] = "x"
+                print("\n")
             else:
                 print("Jogada inválida.")
             

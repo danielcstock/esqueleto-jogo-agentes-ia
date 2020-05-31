@@ -1,7 +1,6 @@
 from agentes.abstrato import AgenteAbstrato
 from acoes import AcaoJogador, AcoesJogador
 
-
 class AgentePrepostoESHumano(AgenteAbstrato):
     
     def adquirirPercepcao(self, percepcao_mundo):

@@ -1,4 +1,7 @@
 from abc import ABC, abstractmethod
+from agentes.tipos import TiposAgentes
+
+
 class AgenteAbstrato(ABC):
     '''
     Classe abstrata de agentes artificiais racionais.
@@ -22,5 +25,11 @@ def construir_agente(*args, **kwargs):
     """ Método factory para uma instância Agente arbitrária, de acordo com os
     paraâmetros. Pode-se mudar à vontade a assinatura do método.
     """
-    from agentes.humano import AgentePrepostoESHumano
-    return AgentePrepostoESHumano()
+    if args[0] == TiposAgentes.PREPOSTO_HUMANO:
+        print("Utilize as setas do teclado numérico para mover o jogador.")
+        print("Cima: 8\nBaixo: 2\nEsquerda: 4\nDireita: 6\n")
+        from agentes.humano import AgentePrepostoESHumano
+        return AgentePrepostoESHumano()
+    elif args[0] == TiposAgentes.AUTO_BFS:
+        from agentes.bfs import AgenteBFS
+        return AgenteBFS()
