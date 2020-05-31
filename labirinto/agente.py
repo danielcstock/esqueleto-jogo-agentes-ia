@@ -16,11 +16,11 @@ class Agentes(AgenteAbstrato):
         ''' Escolhe proxima acao, com base em seu entendimento do mundo, a partir
         das percepções anteriores.
         '''
-        return AcaoJogador.cima()
+        return
 
 def construir_agente(*args, **kwargs):
     """ Método factory para uma instância Agente arbitrária, de acordo com os
-    paraâmetros. Pode-se mudar à vontade a assinatura do método.
+    parâmetros. Pode-se mudar à vontade a assinatura do método.
     """
     agente = Agentes()
     return agente
