@@ -48,41 +48,45 @@ class AgenteBFS(AgenteAbstrato):
         has_solution = False
         solution_list = list()
         while not has_solution:
-            for cont, no in enumerate(estados):
+            indice_no = 0
+            while len(estados) > indice_no:
+                no = estados[indice_no]
                 casas_disponiveis = 0
                 temp_solution = list()
                 # casa de baixo
                 if no.x == jogador[0]+1 and no.y == jogador[1]:
                     casas_disponiveis += 1
-                    temp_solution.append(AcoesJogador.BAIXO)
+                    temp_solution.append([[no.x, no.y], AcoesJogador.BAIXO])
                     jogador[0] = no.x
                     jogador[1] = no.y
                 # casa de cima
                 if no.x == jogador[0]-1 and no.y == jogador[1]:
                     casas_disponiveis += 1
-                    temp_solution.append(AcoesJogador.CIMA)
+                    temp_solution.append([[no.x, no.y], AcoesJogador.CIMA])
                     jogador[0] = no.x
                     jogador[1] = no.y
                 # casa da esquerda
                 if no.x == jogador[0] and no.y == jogador[1]-1:
                     casas_disponiveis += 1
-                    temp_solution.append(AcoesJogador.ESQUERDA)
+                    temp_solution.append([[no.x, no.y], AcoesJogador.ESQUERDA])
                     jogador[0] = no.x
                     jogador[1] = no.y
                 # casa da direita
                 if no.x == jogador[0] and no.y == jogador[1]+1:
                     casas_disponiveis += 1
-                    temp_solution.append(AcoesJogador.DIREITA)
+                    temp_solution.append([[no.x, no.y], AcoesJogador.DIREITA])
                     jogador[0] = no.x
                     jogador[1] = no.y
+                indice_no += 1
                 for _, acao in enumerate(temp_solution):
-                    solution_list.append([cont, acao])
+                    solution_list.append([acao])
+                
                 
                 if all([s[0] - 1 == no.x, s[1] == no.y]):
                     has_solution = True    
         for acao in solution_list:
             print(acao)
-        return solution_list.pop(0)
+        return 
     
     def adquirirPercepcao(self, percepcao_mundo):
         """ Inspeciona a disposicao dos elementos no objeto de visao e escreve
