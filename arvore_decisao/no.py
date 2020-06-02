@@ -3,7 +3,9 @@ class No():
         self.x = kwargs.get("x")
         self.y = kwargs.get("y")
         self.visitado = False
-        self.proximo = list()
+        self.qtdLigacoes = 0
+        self.ligacoes = list()
+        self.nos = list()
 
     def getPosicao(self):
         return [self.x, self.y]

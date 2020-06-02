@@ -2,7 +2,7 @@ from agentes.abstrato import AgenteAbstrato
 from acoes import AcaoJogador, AcoesJogador
 from arvore_decisao.no import No
 
-class AgenteBFS(AgenteAbstrato):
+class AgenteDFS(AgenteAbstrato):
     def __init__(self):
         self.arvore = list()
         self.jogadas = list()
@@ -17,7 +17,7 @@ class AgenteBFS(AgenteAbstrato):
         y = 0
         s_x = 0
         s_y = 0
-        grafo = list()
+        estados = list()
         for i, espaco in enumerate(percepcao_mundo[0]):
             if espaco == "x":
                 y = i
@@ -28,46 +28,31 @@ class AgenteBFS(AgenteAbstrato):
             s_x = i
         s = [s_x, s_y]
         jogador = [x, y]
-        no_jogador = No(x = x, y = y)
-        no_jogador.qtdLigacoes += 1
-        no_jogador.ligacoes.append([x+1, y])
-        grafo.append(no_jogador)
         for i, linha in enumerate(percepcao_mundo):
             for j, espaco in enumerate(linha):
                 if espaco == "e":
                     no = No(x = i, y = j)
                     # casa da direita
-                    if percepcao_mundo[i][j+1] == "e" or percepcao_mundo[i][j+1] == "e":
+                    if percepcao_mundo[i][j+1] == "e":
                         no.ligacoes.append([i, j+1])
                         no.qtdLigacoes += 1
                     # casa da esquerda
-                    if percepcao_mundo[i][j-1] == "e" or percepcao_mundo[i][j-1] == "s":
+                    if percepcao_mundo[i][j-1] == "e":
                         no.ligacoes.append([i, j-1])
                         no.qtdLigacoes += 1
                     # casa de cima
-                    if percepcao_mundo[i-1][j] == "e" or percepcao_mundo[i-1][j] == "s":
+                    if percepcao_mundo[i-1][j] == "e":
                         no.ligacoes.append([i-1, j])
                         no.qtdLigacoes += 1
                     # casa de baixo
-                    if percepcao_mundo[i+1][j] == "e" or percepcao_mundo[i+1][j] == "s":
+                    if percepcao_mundo[i+1][j] == "e":
                         no.ligacoes.append([i+1, j])
                         no.qtdLigacoes += 1
-                    if no.qtdLigacoes > 0:
-                        grafo.append(no)
-        for no in grafo:
-            for no_atual in grafo:
-                if no_atual.getPosicao() in no.ligacoes:
-                    no.nos.append(no_atual)
-        # lista_solucoes = list()
-        # lista_solucoes.append([AcoesJogador.BAIXO])
-        # nomes_solucao = list()
-        # nomes_solucao.append(0)
-        # indice_grafo = 0
-        for no in grafo:
-            
-            
-                
-        # return lista_solucoes[0]
+                    estados.append(no)
+           
+        for no in estados:
+            print(no.getPosicao())
+        return 
     
     def adquirirPercepcao(self, percepcao_mundo):
         """ Inspeciona a disposicao dos elementos no objeto de visao e escreve
@@ -86,6 +71,6 @@ class AgenteBFS(AgenteAbstrato):
             print(str_linha)
     
     def escolherProximaAcao(self):
-        acao = AcaoJogador("BFS", self.jogadas.pop(0))
+        acao = AcaoJogador("DFS", self.jogadas.pop(0))
         return acao
             

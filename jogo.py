@@ -15,7 +15,7 @@ def ler_tempo(em_turnos=False):
 
 def iniciar_jogo():
     # Inicializar e configurar jogo
-    jogo = construir_jogo(tamanho = 10)
+    jogo = construir_jogo(tamanho = 5)
     personagem_jogador = jogo.registrarAgentePersonagem(Personagens.O_JOGADOR)
     # agente_jogador = construir_agente(TiposAgentes.PREPOSTO_HUMANO, Personagens.O_JOGADOR)
     agente_jogador = construir_agente(TiposAgentes.AUTO_BFS, Personagens.O_AGENTE)
