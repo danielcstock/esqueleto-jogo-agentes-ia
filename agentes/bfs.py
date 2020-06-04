@@ -103,18 +103,28 @@ class AgenteBFS(AgenteAbstrato):
                 no.qtdLigacoes -= 1
                 no_anterior.nos.pop(0)
                 
-                 
         for solucao in lista_solucoes:
             if s in solucao:
-                print(solucao)
-                return solucao
-
+                self.solucao = solucao
+        for caminho in self.solucao:
+            if caminho[0] > jogador[0] and caminho[1] == jogador[1]:
+                self.jogadas.append(AcoesJogador.BAIXO)
+            elif caminho[0] < jogador[0] and caminho[1] == jogador[1]:
+                self.jogadas.append(AcoesJogador.CIMA)
+            elif caminho[0] == jogador[0] and caminho[1] > jogador[1]:
+                self.jogadas.append(AcoesJogador.DIREITA)
+            elif caminho[0] == jogador[0] and caminho[1] < jogador[1]:
+                self.jogadas.append(AcoesJogador.ESQUERDA)
+            jogador = caminho
+        for jogada in self.jogadas:
+            print(jogada)
     
     def adquirirPercepcao(self, percepcao_mundo):
         """ Inspeciona a disposicao dos elementos no objeto de visao e escreve
         na tela para o usuário saber o que seu agente está percebendo.
         """
         self.tracarTrajeto(percepcao_mundo)
+
         for linha in percepcao_mundo:
             str_linha = ""
             for espaco in linha:
