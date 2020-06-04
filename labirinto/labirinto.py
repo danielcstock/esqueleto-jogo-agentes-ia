@@ -47,6 +47,12 @@ class Labirinto(AbstractRegrasJogo):
                 self.mapa[i][j] = "e" 
             elif self.mapa[i + 1][j] == 0 and self.mapa[i - 1][j] == 0 and self.mapa[i][j + 1] == 0 and self.mapa[i][j-1] == 0:   
                 self.mapa[i][j] = "e" 
+        self.mapa[0] = [0,0,0,0,'x',0]
+        self.mapa[1] = [0,'e','e','e','e',0]
+        self.mapa[2] = [0,'e',0,0,'e',0]
+        self.mapa[3] = [0,0,'e','e','e',0]
+        self.mapa[4] = [0,'e','e',0,'e',0]
+        self.mapa[5] = [0,0,'s',0,0,0]
 
     def registrarAgentePersonagem(self, personagem):
         """ Cria ou recupera id de um personagem agente.
