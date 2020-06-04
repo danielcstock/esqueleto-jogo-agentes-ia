@@ -1,6 +1,7 @@
 from agentes.abstrato import AgenteAbstrato
 from acoes import AcaoJogador, AcoesJogador
 from arvore_decisao.no import No
+import time
 
 class AgenteBFS(AgenteAbstrato):
     def __init__(self):
@@ -116,14 +117,13 @@ class AgenteBFS(AgenteAbstrato):
             elif caminho[0] == jogador[0] and caminho[1] < jogador[1]:
                 self.jogadas.append(AcoesJogador.ESQUERDA)
             jogador = caminho
-        for jogada in self.jogadas:
-            print(jogada)
     
     def adquirirPercepcao(self, percepcao_mundo):
         """ Inspeciona a disposicao dos elementos no objeto de visao e escreve
         na tela para o usuário saber o que seu agente está percebendo.
         """
-        self.tracarTrajeto(percepcao_mundo)
+        if len(self.jogadas) == 0:
+            self.tracarTrajeto(percepcao_mundo)
 
         for linha in percepcao_mundo:
             str_linha = ""
@@ -137,6 +137,18 @@ class AgenteBFS(AgenteAbstrato):
             print(str_linha)
     
     def escolherProximaAcao(self):
-        acao = AcaoJogador("BFS", self.jogadas.pop(0))
+        time.sleep(1)
+        temp_acao = self.jogadas.pop(0)
+        jogadas = []
+        if temp_acao == AcoesJogador.CIMA:
+            jogadas.append(AcoesJogador.CIMA)
+        elif temp_acao == AcoesJogador.ESQUERDA:
+                jogadas.append(AcoesJogador.ESQUERDA)
+        elif temp_acao == AcoesJogador.DIREITA:
+                jogadas.append(AcoesJogador.DIREITA)
+        elif temp_acao == AcoesJogador.BAIXO:
+                jogadas.append(AcoesJogador.BAIXO)
+        
+        acao = AcaoJogador("BFS", jogadas)
         return acao
             

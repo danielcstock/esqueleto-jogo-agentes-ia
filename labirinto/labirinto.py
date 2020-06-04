@@ -53,6 +53,8 @@ class Labirinto(AbstractRegrasJogo):
         self.mapa[3] = [0,0,'e','e','e',0]
         self.mapa[4] = [0,'e','e',0,'e',0]
         self.mapa[5] = [0,0,'s',0,0,0]
+        self.x = [0, 4]
+        self.s = [5, 2]
 
     def registrarAgentePersonagem(self, personagem):
         """ Cria ou recupera id de um personagem agente.
@@ -133,7 +135,7 @@ class Labirinto(AbstractRegrasJogo):
         """ Faz procedimentos de fim de jogo, como mostrar placar final,
         gravar resultados, etc...
         """ 
-        print(self.tempo)
+        print("Fim. Total de {0} jogadas.".format(self.tempo))
     
 
 

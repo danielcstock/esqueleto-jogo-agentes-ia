@@ -14,7 +14,6 @@ class AcaoJogador():
 
     @classmethod
     def direita(cls):
-        print("direita")
         return cls(AcoesJogador.DIREITA)
 
     @classmethod
