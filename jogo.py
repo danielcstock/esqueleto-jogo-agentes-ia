@@ -17,8 +17,7 @@ def iniciar_jogo():
     # Inicializar e configurar jogo
     jogo = construir_jogo(tamanho = 6)
     personagem_jogador = jogo.registrarAgentePersonagem(Personagens.O_JOGADOR)
-    # agente_jogador = construir_agente(TiposAgentes.PREPOSTO_HUMANO, Personagens.O_JOGADOR)
-    agente_jogador = construir_agente(TiposAgentes.AUTO_BFS, Personagens.O_JOGADOR)
+    agente_jogador = construir_agente(TiposAgentes.AUTO_DFS, Personagens.O_JOGADOR)
     
     tempo_de_jogo = 0
 

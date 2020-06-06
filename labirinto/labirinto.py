@@ -8,53 +8,39 @@ class Labirinto(AbstractRegrasJogo):
         self.tamanho = tamanho
         self.tempo = 0
         self.mapa = []
-        for _ in range(0, tamanho):
-            linha = [0 for j in range(0, tamanho)]
-            self.mapa.append(linha)
-        # Posicionamento do jogador
-        self.x = [0, random.randrange(1, tamanho-1)]
-        self.mapa[self.x[0]][self.x[1]] = "x"
-        # Posicionamento da saída
-        self.s = [tamanho-1, random.randrange(1, tamanho-1)]
-        self.mapa[self.s[0]][self.s[1]] = "s"
-        # Definição do caminho solução
-        i, j = 1, self.x[1]
-        alternador = True
-        while i != self.s[0]-1 or j != self.s[1]:
-            self.mapa[i][j] = "e"
-            if alternador:
-                if i < self.s[0] - 1:
-                    i = i + 1
-                alternador = False
-            else:
-                if j < self.s[1]:
-                    j = j + 1
-                elif j > self.s[1]:
-                    j = j - 1
-                alternador = True
-        self.mapa[i][j] = "e"
-        # Definição dos caminhos extras
-        for _ in range(0, tamanho*10):
-            i = random.randrange(1, tamanho - 2)
-            j = random.randrange(1, tamanho - 2)
-            if self.mapa[i + 1][j] == "e" and self.mapa[i - 1][j] == 0 and self.mapa[i][j + 1] == 0 and self.mapa[i][j-1] == 0:
-                self.mapa[i][j] = "e"
-            elif self.mapa[i + 1][j] == 0 and self.mapa[i - 1][j] == "e" and self.mapa[i][j + 1] == 0 and self.mapa[i][j-1] == 0:
-                self.mapa[i][j] = "e"    
-            elif self.mapa[i + 1][j] == 0 and self.mapa[i - 1][j] == 0 and self.mapa[i][j + 1] == "e" and self.mapa[i][j-1] == 0:
-                self.mapa[i][j] = "e"    
-            elif self.mapa[i + 1][j] == 0 and self.mapa[i - 1][j] == 0 and self.mapa[i][j + 1] == 0 and self.mapa[i][j-1] == "e":
-                self.mapa[i][j] = "e" 
-            elif self.mapa[i + 1][j] == 0 and self.mapa[i - 1][j] == 0 and self.mapa[i][j + 1] == 0 and self.mapa[i][j-1] == 0:   
-                self.mapa[i][j] = "e" 
-        self.mapa[0] = [0,0,0,0,'x',0]
-        self.mapa[1] = [0,'e','e','e','e',0]
-        self.mapa[2] = [0,'e',0,0,'e',0]
-        self.mapa[3] = [0,0,'e','e','e',0]
-        self.mapa[4] = [0,'e','e',0,'e',0]
-        self.mapa[5] = [0,0,'s',0,0,0]
-        self.x = [0, 4]
-        self.s = [5, 2]
+        if tamanho == 6:
+            self.mapa.append([0,0,0,0,'x',0])
+            self.mapa.append([0,'e','e','e','e',0])
+            self.mapa.append([0,'e',0,0,'e',0])
+            self.mapa.append([0,0,'e','e','e',0])
+            self.mapa.append([0,'e','e',0,'e',0])
+            self.mapa.append([0,0,'s',0,0,0])
+            self.x = [0, 4]
+            self.s = [5, 2]
+        else:
+            self.tamanho = 20
+            self.mapa.append([0,0,0,0,'x',0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,])
+            self.mapa.append([0,'e','e','e','e','e',0,0,0,0,'e',0,0,0,'e','e','e',0,'e',0,])
+            self.mapa.append([0,'e',0,0,0,'e',0,'e','e','e','e','e','e','e',0,0,'e','e','e',0,])
+            self.mapa.append([0,'e','e',0,'e','e','e','e',0,0,'e',0,0,'e',0,0,'e',0,'e',0,])
+            self.mapa.append([0,0,'e',0,0,0,0,'e',0,0,'e','e','e','e','e','e','e',0,'e',0,])
+            self.mapa.append([0,0,'e','e','e','e',0,'e','e','e','e',0,0,0,'e',0,'e',0,'e',0,])
+            self.mapa.append([0,'e',0,0,0,'e',0,0,'e',0,0,0,'e','e','e',0,'e','e','e',0,])
+            self.mapa.append([0,'e','e','e','e','e',0,'e','e','e','e','e','e',0,'e',0,0,'e',0,0,])
+            self.mapa.append([0,0,0,'e',0,0,0,0,0,'e',0,0,0,0,'e','e','e','e','e',0,])
+            self.mapa.append([0,'e','e','e','e','e','e','e','e','e','e','e','e','e','e',0,0,0,'e',0,])
+            self.mapa.append([0,'e',0,0,'e',0,0,0,'e',0,0,0,0,0,0,0,'e','e','e',0,])
+            self.mapa.append([0,'e','e',0,'e',0,'e','e','e','e','e','e','e','e','e','e','e',0,0,0,])
+            self.mapa.append([0,0,'e',0,'e',0,'e',0,0,0,0,0,'e',0,0,0,'e',0,0,0,])
+            self.mapa.append([0,0,'e','e','e','e','e','e','e','e','e',0,'e',0,0,0,'e','e','e',0,])
+            self.mapa.append([0,0,'e',0,0,0,0,0,'e',0,'e',0,'e','e','e',0,0,0,0,0,])
+            self.mapa.append([0,0,'e','e','e','e','e',0,'e',0,'e','e',0,0,'e',0,0,0,0,0,])
+            self.mapa.append([0,0,0,0,0,0,'e',0,'e',0,0,'e',0,0,'e','e','e','e',0,0,])
+            self.mapa.append([0,0,0,'e','e','e','e','e','e',0,0,'e','e','e','e',0,0,'e',0,0,])
+            self.mapa.append([0,'e','e','e',0,0,0,0,'e',0,'e','e',0,0,0,0,0,'e','e',0,])
+            self.mapa.append([0,0,0,0,0,0,0,0,'s',0,0,0,0,0,0,0,0,0,0,0,])
+            self.x = [0, 4]
+            self.s = [19, 8]
 
     def registrarAgentePersonagem(self, personagem):
         """ Cria ou recupera id de um personagem agente.

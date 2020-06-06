@@ -33,3 +33,6 @@ def construir_agente(*args, **kwargs):
     elif args[0] == TiposAgentes.AUTO_BFS:
         from agentes.bfs import AgenteBFS
         return AgenteBFS()
+    elif args[0] == TiposAgentes.AUTO_DFS:
+        from agentes.dfs import AgenteDFS
+        return AgenteDFS()
