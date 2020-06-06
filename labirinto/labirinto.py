@@ -32,21 +32,21 @@ class Labirinto(AbstractRegrasJogo):
             self.x = [0,4]
             self.s = [9,8]
         else:
-            self.mapa.append([	0	,	0	,	0	,	0	,	'x'	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	])
-            self.mapa.append([	0	,	'e'	,	'e'	,	0	,	'e'	,	'e'	,	'e'	,	'e'	,	'e'	,	'e'	,	0	,	'e'	,	'e'	,	0	])
-            self.mapa.append([	0	,	'e'	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	'e'	,	0	,	0	,	'e'	,	0	])
-            self.mapa.append([	0	,	'e'	,	0	,	0	,	'e'	,	'e'	,	'e'	,	0	,	0	,	'e'	,	'e'	,	'e'	,	'e'	,	0	])
-            self.mapa.append([	0	,	'e'	,	'e'	,	'e'	,	'e'	,	0	,	'e'	,	0	,	0	,	'e'	,	0	,	0	,	'e'	,	0	])
-            self.mapa.append([	0	,	0	,	0	,	0	,	'e'	,	0	,	'e'	,	'e'	,	'e'	,	'e'	,	0	,	0	,	'e'	,	0	])
-            self.mapa.append([	0	,	'e'	,	'e'	,	0	,	'e'	,	0	,	0	,	0	,	0	,	0	,	'e'	,	'e'	,	'e'	,	0	])
-            self.mapa.append([	0	,	'e'	,	0	,	0	,	'e'	,	'e'	,	'e'	,	'e'	,	'e'	,	'e'	,	0	,	0	,	'e'	,	0	])
-            self.mapa.append([	0	,	'e'	,	0	,	0	,	0	,	0	,	0	,	'e'	,	0	,	'e'	,	0	,	0	,	'e'	,	0	])
-            self.mapa.append([	0	,	'e'	,	'e'	,	'e'	,	'e'	,	0	,	0	,	'e'	,	0	,	'e'	,	0	,	'e'	,	'e'	,	0	])
-            self.mapa.append([	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	'e'	,	0	,	0	])
-            self.mapa.append([	0	,	0	,	'e'	,	'e'	,	'e'	,	'e'	,	'e'	,	'e'	,	'e'	,	'e'	,	'e'	,	'e'	,	0	,	0	])
-            self.mapa.append([	0	,	0	,	0	,	'e'	,	0	,	'e'	,	0	,	'e'	,	0	,	0	,	0	,	'e'	,	0	,	0	])
-            self.mapa.append([	0	,	'e'	,	'e'	,	'e'	,	0	,	'e'	,	'e'	,	'e'	,	0	,	'e'	,	'e'	,	'e'	,	'e'	,	0	])
-            self.mapa.append([	0	,	's'	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	])
+            self.mapa.append([0,0,0,0,'x',0,0,0,0,0,0,0,0,0])
+            self.mapa.append([0,'e','e',0,'e','e','e','e','e','e',0,'e','e',0])
+            self.mapa.append([0,'e',0,0,0,0,0,0,0,'e',0,0,'e',0])
+            self.mapa.append([0,'e',0,0,'e','e','e',0,0,'e','e','e','e',0])
+            self.mapa.append([0,'e','e','e','e',0,'e',0,0,'e',0,0,'e',0])
+            self.mapa.append([0,0,0,0,'e',0,'e','e','e','e',0,0,'e',0])
+            self.mapa.append([0,'e','e',0,'e',0,0,0,0,0,'e','e','e',0])
+            self.mapa.append([0,'e',0,0,'e','e','e','e','e','e',0,0,'e',0])
+            self.mapa.append([0,'e',0,0,0,0,0,'e',0,'e',0,0,'e',0])
+            self.mapa.append([0,'e','e','e','e',0,0,'e',0,'e',0,'e','e',0])
+            self.mapa.append([0,0,0,0,0,0,0,0,0,0,0,'e',0,0])
+            self.mapa.append([0,0,'e','e','e','e','e','e','e','e','e','e',0,0])
+            self.mapa.append([0,0,0,'e',0,'e',0,'e',0,0,0,'e',0,0])
+            self.mapa.append([0,'e','e','e',0,'e','e','e',0,'e','e','e','e',0])
+            self.mapa.append([0,'s',0,0,0,0,0,0,0,0,0,0,0,0])
 
             self.x = [0,4]
             self.s = [14,1]

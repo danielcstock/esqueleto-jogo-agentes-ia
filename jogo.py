@@ -14,10 +14,29 @@ def ler_tempo(em_turnos=True):
     return 1 if em_turnos else time.time()
 
 def iniciar_jogo():
+    # Ler parâmetros do usuário
+    print('Escolha um tamanho para o labirinto:\n6\n10\n15')
+    tamanho = int(input())
+    print('Escolha o tipo de agente:\n1 - Humano\n2 - DFS\n3 - BFS\n4 - DFS Limitado\n5 - DFS Iterativo\n6 - Busca Gulosa\n7 - Busca A*')
+    agente = int(input())
+    if agente == 1:
+        agente = TiposAgentes.PREPOSTO_HUMANO
+    elif agente == 2:
+        agente = TiposAgentes.AUTO_DFS
+    elif agente == 3:
+        agente = TiposAgentes.AUTO_BFS
+    elif agente == 4:
+        agente = TiposAgentes.AUTO_DFS_LIMIT
+    elif agente == 5:
+        agente = TiposAgentes.AUTO_DFS_ITERA
+    elif agente == 6:
+        agente = TiposAgentes.AUTO_BUSCA_GULOSA
+    else:
+        agente = TiposAgentes.AUTO_A_ESTRELA
     # Inicializar e configurar jogo
-    jogo = construir_jogo(tamanho = 15)
+    jogo = construir_jogo(tamanho = tamanho)
     personagem_jogador = jogo.registrarAgentePersonagem(Personagens.O_JOGADOR)
-    agente_jogador = construir_agente(TiposAgentes.PREPOSTO_HUMANO, Personagens.O_JOGADOR)
+    agente_jogador = construir_agente(agente, Personagens.O_JOGADOR)
     
     tempo_de_jogo = 0
 

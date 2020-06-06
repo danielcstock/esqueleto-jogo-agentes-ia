@@ -36,3 +36,9 @@ def construir_agente(*args, **kwargs):
     elif args[0] == TiposAgentes.AUTO_DFS:
         from agentes.dfs import AgenteDFS
         return AgenteDFS()
+    elif args[0] == TiposAgentes.AUTO_DFS_LIMIT:
+        from agentes.dfs_limitado import AgenteDFSLimitado
+        return AgenteDFSLimitado()
+    elif args[0] == TiposAgentes.AUTO_DFS_ITERA:
+        from agentes.dfs_iterativo import AgenteDFSIterativo
+        return AgenteDFSIterativo()

@@ -8,31 +8,17 @@ class AgenteDFS(AgenteAbstrato):
         self.arvore = list()
         self.jogadas = list()
 
-    def avaliarNos(self, inicio, solucao, estados):
-        self.arvore.append(inicio)
-        # for elemento in estados:
-            
-
-    def tracarTrajeto(self, percepcao_mundo):
+    def popularGrafo(self, percepcao_mundo):
         x = 0
         y = 0
-        s_x = 0
-        s_y = 0
-        grafo = list()
+        self.grafo = list()
         for i, espaco in enumerate(percepcao_mundo[0]):
             if espaco == "x":
                 y = i
-        for i, linha in enumerate(percepcao_mundo):
-            for j, espaco in enumerate(linha):
-                if espaco == "s":
-                    s_y = j
-            s_x = i
-        s = [s_x, s_y]
-        jogador = [x, y]
         no_jogador = No(x = x, y = y)
         no_jogador.qtdLigacoes += 1
         no_jogador.ligacoes.append([x+1, y])
-        grafo.append(no_jogador)
+        self.grafo.append(no_jogador)
         for i, linha in enumerate(percepcao_mundo):
             for j, espaco in enumerate(linha):
                 if espaco == "e":
@@ -54,18 +40,53 @@ class AgenteDFS(AgenteAbstrato):
                         no.ligacoes.append([i+1, j])
                         no.qtdLigacoes += 1
                     if no.qtdLigacoes > 0:
-                        grafo.append(no)
-        for no in grafo:
-            for no_atual in grafo:
+                        self.grafo.append(no)
+        for no in self.grafo:
+            for no_atual in self.grafo:
                 if no_atual.getPosicao() in no.ligacoes:
                     no.nos.append(no_atual)
+
+    def definirSolucao(self, lista_solucoes, s):
+        for solucao in lista_solucoes:
+            if s in solucao:
+                self.solucao = solucao
+        jogador = self.solucao[0]
+        for caminho in self.solucao:
+            if caminho[0] > jogador[0] and caminho[1] == jogador[1]:
+                self.jogadas.append(AcoesJogador.BAIXO)
+            elif caminho[0] < jogador[0] and caminho[1] == jogador[1]:
+                self.jogadas.append(AcoesJogador.CIMA)
+            elif caminho[0] == jogador[0] and caminho[1] > jogador[1]:
+                self.jogadas.append(AcoesJogador.DIREITA)
+            elif caminho[0] == jogador[0] and caminho[1] < jogador[1]:
+                self.jogadas.append(AcoesJogador.ESQUERDA)
+            jogador = caminho
+
+    def tracarTrajeto(self, percepcao_mundo):
+        x = 0
+        y = 0
+        s_x = 0
+        s_y = 0
+        for i, espaco in enumerate(percepcao_mundo[0]):
+            if espaco == "x":
+                y = i
+        for i, linha in enumerate(percepcao_mundo):
+            for j, espaco in enumerate(linha):
+                if espaco == "s":
+                    s_y = j
+            s_x = i
+        s = [s_x, s_y]
+        no_jogador = No(x = x, y = y)
+        no_jogador.qtdLigacoes += 1
+        no_jogador.ligacoes.append([x+1, y])
+        self.popularGrafo(percepcao_mundo)
         lista_solucoes = [list()]
-        lista_solucoes[0].append(grafo[0].getPosicao())
-        no = grafo[0]
+        lista_solucoes[0].append(self.grafo[0].getPosicao())
+        no = self.grafo[0]
         bifurcacoes = [no]
         has_solution = False
         no_anterior = list()
-        no_anterior.append(grafo[0])
+        no_anterior.append(self.grafo[0])
         while not has_solution:
             if s in no.ligacoes:
                 while no.ligacoes[0] != s:
@@ -84,12 +105,10 @@ class AgenteDFS(AgenteAbstrato):
                     lista_solucoes[-1].append(no.ligacoes[0])
                     no_anterior.append(no)
                     no = no.nos[0]
-                    if no_anterior[-1] != grafo[0] and no_anterior[-1] in no.nos:
+                    if no_anterior[-1] != self.grafo[0] and no_anterior[-1] in no.nos:
                         no.nos.remove(no_anterior[-1])
                         no.ligacoes.remove(no_anterior[-1].getPosicao())
                         no.qtdLigacoes -= 1
-                    else:
-                        print(no_anterior[-1].getPosicao())
                 else:
                     no = no_anterior.pop()
             elif no.qtdLigacoes > 1:
@@ -107,19 +126,7 @@ class AgenteDFS(AgenteAbstrato):
                 no.qtdLigacoes -= 1
                 no_anterior[-1].nos.pop(0)
                 
-        for solucao in lista_solucoes:
-            if s in solucao:
-                self.solucao = solucao
-        for caminho in self.solucao:
-            if caminho[0] > jogador[0] and caminho[1] == jogador[1]:
-                self.jogadas.append(AcoesJogador.BAIXO)
-            elif caminho[0] < jogador[0] and caminho[1] == jogador[1]:
-                self.jogadas.append(AcoesJogador.CIMA)
-            elif caminho[0] == jogador[0] and caminho[1] > jogador[1]:
-                self.jogadas.append(AcoesJogador.DIREITA)
-            elif caminho[0] == jogador[0] and caminho[1] < jogador[1]:
-                self.jogadas.append(AcoesJogador.ESQUERDA)
-            jogador = caminho
+        self.definirSolucao(lista_solucoes, s)
     
     def adquirirPercepcao(self, percepcao_mundo):
         """ Inspeciona a disposicao dos elementos no objeto de visao e escreve
@@ -152,6 +159,6 @@ class AgenteDFS(AgenteAbstrato):
         elif temp_acao == AcoesJogador.BAIXO:
                 jogadas.append(AcoesJogador.BAIXO)
         
-        acao = AcaoJogador("BFS", jogadas)
+        acao = AcaoJogador("DFS", jogadas)
         return acao
             
