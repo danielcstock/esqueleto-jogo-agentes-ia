@@ -17,30 +17,40 @@ class Labirinto(AbstractRegrasJogo):
             self.mapa.append([0,0,'s',0,0,0])
             self.x = [0, 4]
             self.s = [5, 2]
+        elif tamanho == 10:
+            self.tamanho = 10
+            self.mapa.append([0,0,0,0,'x',0,0,0,0,0])
+            self.mapa.append([0,'e','e','e','e',0,'e','e','e',0])
+            self.mapa.append([0,0,'e',0,'e',0,0,0,'0',0])
+            self.mapa.append([0,0,'e',0,'e','e','e','e','e',0])
+            self.mapa.append([0,'e',0,'e','e',0,0,0,'e',0])
+            self.mapa.append([0,'e',0,'e','e','e','e','e','e',0])
+            self.mapa.append([0,'e','e','e',0,'e',0,'e',0,0])
+            self.mapa.append([0,'e',0,0,0,'e',0,'e',0,0])
+            self.mapa.append([0,'e','e','e','e','e',0,'e','e',0])
+            self.mapa.append([0,0,0,0,0,0,0,0,'s',0])
+            self.x = [0,4]
+            self.s = [9,8]
         else:
-            self.tamanho = 20
-            self.mapa.append([0,0,0,0,'x',0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,])
-            self.mapa.append([0,'e','e','e','e','e',0,0,0,0,'e',0,0,0,'e','e','e',0,'e',0,])
-            self.mapa.append([0,'e',0,0,0,'e',0,'e','e','e','e','e','e','e',0,0,'e','e','e',0,])
-            self.mapa.append([0,'e','e',0,'e','e','e','e',0,0,'e',0,0,'e',0,0,'e',0,'e',0,])
-            self.mapa.append([0,0,'e',0,0,0,0,'e',0,0,'e','e','e','e','e','e','e',0,'e',0,])
-            self.mapa.append([0,0,'e','e','e','e',0,'e','e','e','e',0,0,0,'e',0,'e',0,'e',0,])
-            self.mapa.append([0,'e',0,0,0,'e',0,0,'e',0,0,0,'e','e','e',0,'e','e','e',0,])
-            self.mapa.append([0,'e','e','e','e','e',0,'e','e','e','e','e','e',0,'e',0,0,'e',0,0,])
-            self.mapa.append([0,0,0,'e',0,0,0,0,0,'e',0,0,0,0,'e','e','e','e','e',0,])
-            self.mapa.append([0,'e','e','e','e','e','e','e','e','e','e','e','e','e','e',0,0,0,'e',0,])
-            self.mapa.append([0,'e',0,0,'e',0,0,0,'e',0,0,0,0,0,0,0,'e','e','e',0,])
-            self.mapa.append([0,'e','e',0,'e',0,'e','e','e','e','e','e','e','e','e','e','e',0,0,0,])
-            self.mapa.append([0,0,'e',0,'e',0,'e',0,0,0,0,0,'e',0,0,0,'e',0,0,0,])
-            self.mapa.append([0,0,'e','e','e','e','e','e','e','e','e',0,'e',0,0,0,'e','e','e',0,])
-            self.mapa.append([0,0,'e',0,0,0,0,0,'e',0,'e',0,'e','e','e',0,0,0,0,0,])
-            self.mapa.append([0,0,'e','e','e','e','e',0,'e',0,'e','e',0,0,'e',0,0,0,0,0,])
-            self.mapa.append([0,0,0,0,0,0,'e',0,'e',0,0,'e',0,0,'e','e','e','e',0,0,])
-            self.mapa.append([0,0,0,'e','e','e','e','e','e',0,0,'e','e','e','e',0,0,'e',0,0,])
-            self.mapa.append([0,'e','e','e',0,0,0,0,'e',0,'e','e',0,0,0,0,0,'e','e',0,])
-            self.mapa.append([0,0,0,0,0,0,0,0,'s',0,0,0,0,0,0,0,0,0,0,0,])
-            self.x = [0, 4]
-            self.s = [19, 8]
+            self.mapa.append([	0	,	0	,	0	,	0	,	'x'	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	])
+            self.mapa.append([	0	,	'e'	,	'e'	,	0	,	'e'	,	'e'	,	'e'	,	'e'	,	'e'	,	'e'	,	0	,	'e'	,	'e'	,	0	])
+            self.mapa.append([	0	,	'e'	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	'e'	,	0	,	0	,	'e'	,	0	])
+            self.mapa.append([	0	,	'e'	,	0	,	0	,	'e'	,	'e'	,	'e'	,	0	,	0	,	'e'	,	'e'	,	'e'	,	'e'	,	0	])
+            self.mapa.append([	0	,	'e'	,	'e'	,	'e'	,	'e'	,	0	,	'e'	,	0	,	0	,	'e'	,	0	,	0	,	'e'	,	0	])
+            self.mapa.append([	0	,	0	,	0	,	0	,	'e'	,	0	,	'e'	,	'e'	,	'e'	,	'e'	,	0	,	0	,	'e'	,	0	])
+            self.mapa.append([	0	,	'e'	,	'e'	,	0	,	'e'	,	0	,	0	,	0	,	0	,	0	,	'e'	,	'e'	,	'e'	,	0	])
+            self.mapa.append([	0	,	'e'	,	0	,	0	,	'e'	,	'e'	,	'e'	,	'e'	,	'e'	,	'e'	,	0	,	0	,	'e'	,	0	])
+            self.mapa.append([	0	,	'e'	,	0	,	0	,	0	,	0	,	0	,	'e'	,	0	,	'e'	,	0	,	0	,	'e'	,	0	])
+            self.mapa.append([	0	,	'e'	,	'e'	,	'e'	,	'e'	,	0	,	0	,	'e'	,	0	,	'e'	,	0	,	'e'	,	'e'	,	0	])
+            self.mapa.append([	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	'e'	,	0	,	0	])
+            self.mapa.append([	0	,	0	,	'e'	,	'e'	,	'e'	,	'e'	,	'e'	,	'e'	,	'e'	,	'e'	,	'e'	,	'e'	,	0	,	0	])
+            self.mapa.append([	0	,	0	,	0	,	'e'	,	0	,	'e'	,	0	,	'e'	,	0	,	0	,	0	,	'e'	,	0	,	0	])
+            self.mapa.append([	0	,	'e'	,	'e'	,	'e'	,	0	,	'e'	,	'e'	,	'e'	,	0	,	'e'	,	'e'	,	'e'	,	'e'	,	0	])
+            self.mapa.append([	0	,	's'	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	])
+
+            self.x = [0,4]
+            self.s = [14,1]
+
 
     def registrarAgentePersonagem(self, personagem):
         """ Cria ou recupera id de um personagem agente.

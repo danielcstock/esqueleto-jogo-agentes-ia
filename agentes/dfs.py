@@ -64,7 +64,8 @@ class AgenteDFS(AgenteAbstrato):
         no = grafo[0]
         bifurcacoes = [no]
         has_solution = False
-        no_anterior = grafo[0]
+        no_anterior = list()
+        no_anterior.append(grafo[0])
         while not has_solution:
             if s in no.ligacoes:
                 while no.ligacoes[0] != s:
@@ -75,20 +76,22 @@ class AgenteDFS(AgenteAbstrato):
                 no = bifurcacoes.pop()
                 lista_solucoes.pop()
             elif no.qtdLigacoes == 0:
-                no = no_anterior
+                no = no_anterior.pop()
                 no.nos.pop(0)
 
             elif no.qtdLigacoes == 1:
                 if no.ligacoes[0] != no.getPosicao() and no.ligacoes[0] not in lista_solucoes[-1]:
                     lista_solucoes[-1].append(no.ligacoes[0])
-                    no_anterior = no
+                    no_anterior.append(no)
                     no = no.nos[0]
-                    if no_anterior != grafo[0]:
-                        no.nos.remove(no_anterior)
-                        no.ligacoes.remove(no_anterior.getPosicao())
+                    if no_anterior[-1] != grafo[0] and no_anterior[-1] in no.nos:
+                        no.nos.remove(no_anterior[-1])
+                        no.ligacoes.remove(no_anterior[-1].getPosicao())
                         no.qtdLigacoes -= 1
+                    else:
+                        print(no_anterior[-1].getPosicao())
                 else:
-                    no = no_anterior
+                    no = no_anterior.pop()
             elif no.qtdLigacoes > 1:
                 lista_solucoes.append(list())
                 for p in lista_solucoes[-2]:
@@ -97,12 +100,12 @@ class AgenteDFS(AgenteAbstrato):
                 lista_solucoes[-1].append(no.ligacoes[0])
                 no.qtdLigacoes -= 1
                 no.ligacoes.remove(lista_solucoes[-1][-1])
-                no_anterior = no
+                no_anterior.append(no)
                 no = no.nos[0]
-                no.nos.remove(no_anterior)
-                no.ligacoes.remove(no_anterior.getPosicao())
+                no.nos.remove(no_anterior[-1])
+                no.ligacoes.remove(no_anterior[-1].getPosicao())
                 no.qtdLigacoes -= 1
-                no_anterior.nos.pop(0)
+                no_anterior[-1].nos.pop(0)
                 
         for solucao in lista_solucoes:
             if s in solucao:
